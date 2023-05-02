@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Color Palette Generator</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #F5F5F5;
+		}
+		h1 {
+			font-size: 32px;
+			color: #333333;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			text-align: center;
+		}
+		#palette {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			margin-top: 20px;
+		}
+                #color-code-div {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+                        justify-text: center;
+			margin-top: 20px;
+                }
+		.color {
+			width: 150px;
+			height: 150px;
+			margin: 10px;
+			border-radius: 50%;
+			cursor: pointer;
+			transition: transform 0.3s ease-in-out;
+		}
+		.color:hover {
+			transform: scale(1.1);
+		}
+		.color-code {
+			width: 150px;
+			height: 150px;
+			margin: 10px;
+			border-radius: 50%;
+			cursor: pointer;
+			transition: transform 0.3s ease-in-out;
+		}
+		#generate-button {
+			display: block;
+			margin: 0 auto;
+			margin-top: 20px;
+			padding: 10px 20px;
+			font-size: 20px;
+			font-weight: bold;
+			color: #FFFFFF;
+			background-color: #333333;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s ease-in-out;
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+		}
+		#generate-button:hover {
+			background-color: #555555;
+		}
+	</style>
+</head>
+<body>
+	<h1>Color Palette Generator</h1>
+	<div id="palette">
+		<div class="color" id="color1"></div>
+		<div class="color" id="color2"></div>
+		<div class="color" id="color3"></div>
+		<div class="color" id="color4"></div>
+		<div class="color" id="color5"></div>
+	</div>
+        <div id="color-code-div">
+		<div id="color-code1" class="color-code">#FFFFFF</div>
+		<div id="color-code2" class="color-code">#FFFFFF</div>
+		<div id="color-code3" class="color-code">#FFFFFF</div>
+		<div id="color-code4" class="color-code">#FFFFFF</div>
+		<div id="color-code5" class="color-code">#FFFFFF</div>
+        </div>
+	<button id="generate-button">Generate</button>
+	<script>
+		function generateColor() {
+			var letters = "0123456789ABCDEF";
+			var color = "#";
+			for (var i = 0; i < 6; i++) {
+				color += letters[Math.floor(Math.random() * 16)];
+			}
+			return color;
+		}
+
+		function generatePalette() {
+			document.getElementById("color1").style.backgroundColor = generateColor();
+			document.getElementById("color2").style.backgroundColor = generateColor();
+			document.getElementById("color3").style.backgroundColor = generateColor();
+			document.getElementById("color4").style.backgroundColor = generateColor();
+			document.getElementById("color5").style.backgroundColor = generateColor();
+		}
+
+		document.getElementById("generate-button").addEventListener("click", function() {
+			generatePalette();
+			document.getElementById("color-code1").innerHTML = document.getElementById("color1").style.backgroundColor;
+			document.getElementById("color-code2").innerHTML = document.getElementById("color2").style.backgroundColor;
+			document.getElementById("color-code3").innerHTML = document.getElementById("color3").style.backgroundColor;
+			document.getElementById("color-code4").innerHTML = document.getElementById("color4").style.backgroundColor;
+			document.getElementById("color-code5").innerHTML = document.getElementById("color5").style.backgroundColor;
+		});
+	</script>
+</body>
+</html>
